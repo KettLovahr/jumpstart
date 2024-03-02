@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JumpStart</title>
 </head>
-<body onclick="marcar_tempo()">
+<body onmousedown="marcar_tempo()" onclick="iniciar()">
     <div id="semaforo">
         <div id="luz1" class="luz"></div>
         <div id="luz2" class="luz"></div>
@@ -43,7 +43,7 @@
 
     }
 
-    function marcar_tempo() {
+    function iniciar() {
         if (!started) {
             reset();
             temporizador.style.display = "none";
@@ -61,17 +61,22 @@
                 luz4.style.backgroundColor = green_light;
                 timestamp_start = Date.now();
             }, start_time);
+        } else {
+                if (timestamp_start > 0) {
+                    started = false;
+                }
         }
-        else {
+    }
+
+    function marcar_tempo() {
+        if (started) {
                 if (timestamp_start > 0) {
                 timestamp_end = Date.now();
 
                 temporizador.style.display = "block";
                 temporizador.innerHTML = `Você reagiu em ${(timestamp_end - timestamp_start) / 1000} segundos!`;
-                started = false;
             }
         }
-        
     }
 </script>
 <style>
