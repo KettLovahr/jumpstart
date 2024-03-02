@@ -29,23 +29,24 @@
     let timestamp_start = 0;
     let timestamp_end = 0;
 
-
+    const red_light = "#FF0000";
+    const green_light = "#00FF00";
 
     function marcar_tempo() {
         if (!started) {
             temporizador.style.display = "none";
             started = true;
 
-            setTimeout(() => {luz1.style.backgroundColor = "#FF0000";}, 1000);
-            setTimeout(() => {luz2.style.backgroundColor = "#FF0000";}, 2000);
-            setTimeout(() => {luz3.style.backgroundColor = "#FF0000";}, 3000);
-            setTimeout(() => {luz4.style.backgroundColor = "#FF0000";}, 4000);
+            setTimeout(() => {luz1.style.backgroundColor = red_light;}, 1000);
+            setTimeout(() => {luz2.style.backgroundColor = red_light;}, 2000);
+            setTimeout(() => {luz3.style.backgroundColor = red_light;}, 3000);
+            setTimeout(() => {luz4.style.backgroundColor = red_light;}, 4000);
 
             setTimeout(() => {
-                luz1.style.backgroundColor = "#000000";
-                luz2.style.backgroundColor = "#000000";
-                luz3.style.backgroundColor = "#000000";
-                luz4.style.backgroundColor = "#000000";
+                luz1.style.backgroundColor = green_ligh;
+                luz2.style.backgroundColor = green_light;
+                luz3.style.backgroundColor = green_light;
+                luz4.style.backgroundColor = green_light;
                 timestamp_start = Date.now();
             }, start_time);
         }
