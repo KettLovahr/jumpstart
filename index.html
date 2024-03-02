@@ -29,11 +29,24 @@
     let timestamp_start = 0;
     let timestamp_end = 0;
 
+    const off_light = "#000000";
     const red_light = "#FF0000";
     const green_light = "#00FF00";
 
+    function reset() {
+        timestamp_start = 0;
+        let luzes = document.getElementsByClassName("luz");
+        console.log(luzes);
+
+        for (let i = 0; i < luzes.length; i++) {
+            luzes[i].style.backgroundColor = off_light;
+        }
+
+    }
+
     function marcar_tempo() {
         if (!started) {
+            reset();
             temporizador.style.display = "none";
             started = true;
 
@@ -43,7 +56,7 @@
             setTimeout(() => {luz4.style.backgroundColor = red_light;}, 4000);
 
             setTimeout(() => {
-                luz1.style.backgroundColor = green_ligh;
+                luz1.style.backgroundColor = green_light;
                 luz2.style.backgroundColor = green_light;
                 luz3.style.backgroundColor = green_light;
                 luz4.style.backgroundColor = green_light;
@@ -52,10 +65,11 @@
         }
         else {
                 if (timestamp_start > 0) {
-                timestamp_end = Date.now()
+                timestamp_end = Date.now();
 
                 temporizador.style.display = "block";
                 temporizador.innerHTML = `Você reagiu em ${(timestamp_end - timestamp_start) / 1000} segundos!`;
+                started = false;
             }
         }
         
